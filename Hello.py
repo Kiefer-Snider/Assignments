@@ -3,6 +3,8 @@ print "Hello World"
 
 if True or False and "Hello World":
     print "Woah"
+    if True:
+        pass
 elif True:
     pass
 else:
