@@ -48,8 +48,9 @@ print "Prepare to be amazed and test your Knowledge!!"
 clear()'''
 
 
-# Number Guesser
-def guess():    
+# Number Guesser Code
+
+def guess():   
     print 'This is the Random Number Guesser!'
     print 'You will give me two numbers and then you will'
     print 'Guess a number between those numbers.'
@@ -60,7 +61,7 @@ def guess():
 
     import random
     for x in range(1):
-        ran_num = random.randint(num1, num2)   
+        ran_num = random.randint(num1, num2)  # Gets a random integar between the numbers  
         answer = raw_input('Please guess the number: ')
         if answer == ran_num:
             print 'Correct'
@@ -81,5 +82,47 @@ def guess_game():
         guess()
     elif play == 'n':
         pass
+    else:
+        pass
+
+# Tic Tac Toe Code
+
+
+def tic_start():
+
+    print "Welcome to Tic Tac Toe!"
+    print "Player 1 will be X and Player 2 will be O."
+    print 'To choose a space enter the matching number.'
+    print 'Here is a legend:'
+    print '   1   2   3   '
+    print '   4   5   6   '
+    print '   7   8   9   '
+    print " "
+
+
+def tic_game():
+
+    win = 0
+    if win == 0:
+        for counter in range(len(1, 9)):
+            move = raw_input('Current Player: ')
+            
+
+
+def tic_play():
+    tic_start()
+    print 'If at anytime you wish to see the legend, just type legend.'
+    ready = raw_input("Ready(y/n): ")
+    if ready == 'y':
+        tic_game()
+    elif ready == 'n':
+        print "Alright I'll reapeat myself then."
+        clear()
+        tic_start()
+    elif ready == 'legend':
+        print '   1   2   3   '
+        print '   4   5   6   '
+        print '   7   8   9   '
+        print ' '
     else:
         pass
