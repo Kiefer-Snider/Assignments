@@ -70,7 +70,7 @@ def guess():
         elif answer < ran_num:
             answer = raw_input('Sorry that is a little low, Try Again: ')
         else:
-            pass
+            break
 
 
 def guess_game():
@@ -87,42 +87,95 @@ def guess_game():
 
 # Tic Tac Toe Code
 
+def tic_win():
+    for c in range(0, 3):  # Rows and Columns Counter
+        
+        # Horizontal Check
+        if board[c][0] == player and board[c][1] == player and board[c][2] == player:
+            print "*********\n\n%s wins\n\n*********" % player
+            playerwin = True
+            return playerwin
+        
+        # Vertical Check
+        elif board[0][c] == player and board[1][c] == player and board[2][c] == player:
+            print "*********\n\n%s wins\n\n*********" % player
+            playerwin = True
+            return playerwin
+        
+        # Diagonal Check (left to right)
+        elif board[0][0] == player and board[1][1] == player and board[2][2] == player:
+            print "*********\n\n%s wins\n\n*********" % player
+            playerwin = True
+            return playerwin
+        
+        # Diagonal Check (right to left)
+        elif board[0][2] == player and board[1][1] == player and board[2][0] == player:
+            print "*********\n\n%s wins\n\n*********" % player
+            playerwin = True
+            return playerwin
+        else:
+            playerwin = False
+            return playerwin
 
-def tic_start():
 
-    print "Welcome to Tic Tac Toe!"
-    print "Player 1 will be X and Player 2 will be O."
-    print 'To choose a space enter the matching number.'
-    print 'Here is a legend:'
-    print '   1   2   3   '
-    print '   4   5   6   '
-    print '   7   8   9   '
-    print " "
+def tic_turn(player):  # The Turn
+    print "%s's turn" % player
+    turn = 1
+    while(turn):
+        print "Select column [1-3]: ",
+        col = int(raw_input()) - 1
+        print "Select row [1-3]: ",
+        row = int(raw_input()) - 1
+        if board[row][col] == 'X' or board[row][col] == 'O':
+            print "Already Taken!"
+        else:
+            board[row][col] = player
+            turn = 0
+
+
+def print_board():
+    print board[0]
+    print board[1]
+    print board[2]
+
+
+# The Board
+board = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]
+player1 = 'X'
+player2 = 'O'
+win = False
 
 
 def tic_game():
+    turns = 0
 
-    win = 0
-    if win == 0:
-        for counter in range(len(1, 9)):
-            move = raw_input('Current Player: ')
-            
+    # The Actual Game
+    print_board()
+    while (win == False):
+        tic_turn(player1)
+        turns += 1
+        print_board()
+        if tic_win(player1) == True: break
+        if turns == 9:
+            print 'This game has come to a draw!'
+            break
+
+        tic_turn(player2)
+        turns += 1
+        print_board()
+        tic_win(player2)
+        if tic_win(player2) == True: break      
 
 
-def tic_play():
-    tic_start()
-    print 'If at anytime you wish to see the legend, just type legend.'
+'''def tic_play():
+    print "Welcome to Tic Tac Toe!"
+    print "I hope your ready to play!"   
     ready = raw_input("Ready(y/n): ")
     if ready == 'y':
         tic_game()
     elif ready == 'n':
-        print "Alright I'll reapeat myself then."
-        clear()
-        tic_start()
-    elif ready == 'legend':
-        print '   1   2   3   '
-        print '   4   5   6   '
-        print '   7   8   9   '
-        print ' '
+        pass        
     else:
-        pass
+        pass'''
+
+
