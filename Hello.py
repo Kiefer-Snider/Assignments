@@ -45,7 +45,11 @@ def clear():
 
 '''print "Welcome to the Great Quiz!!"
 print "Prepare to be amazed and test your Knowledge!!"
-clear()'''
+clear()
+
+with open('Quiz.txt', 'rU') as f:
+    for line in f:
+        print line,'''
 
 
 # Number Guesser Code
@@ -87,15 +91,16 @@ def guess_game():
 
 # Tic Tac Toe Code
 
-def tic_win():
+
+def tic_win(player):
     for c in range(0, 3):  # Rows and Columns Counter
-        
+
         # Horizontal Check
         if board[c][0] == player and board[c][1] == player and board[c][2] == player:
             print "*********\n\n%s wins\n\n*********" % player
             playerwin = True
             return playerwin
-        
+      
         # Vertical Check
         elif board[0][c] == player and board[1][c] == player and board[2][c] == player:
             print "*********\n\n%s wins\n\n*********" % player
@@ -151,31 +156,20 @@ def tic_game():
 
     # The Actual Game
     print_board()
-    while (win == False):
+    while win is False:
         tic_turn(player1)
         turns += 1
         print_board()
-        if tic_win(player1) == True: break
-        if turns == 9:
-            print 'This game has come to a draw!'
+        if tic_win(player1) is True:
+            break
+            if turns == 9:
+                print 'This game has come to a draw!'
             break
 
         tic_turn(player2)
         turns += 1
         print_board()
         tic_win(player2)
-        if tic_win(player2) == True: break      
-
-
-'''def tic_play():
-    print "Welcome to Tic Tac Toe!"
-    print "I hope your ready to play!"   
-    ready = raw_input("Ready(y/n): ")
-    if ready == 'y':
-        tic_game()
-    elif ready == 'n':
-        pass        
-    else:
-        pass'''
-
+        if tic_win(player2) is True:
+            break
 
