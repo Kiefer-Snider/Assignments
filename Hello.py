@@ -43,13 +43,8 @@ def clear():
 
 # Quiz Code
 
-'''print "Welcome to the Great Quiz!!"
-print "Prepare to be amazed and test your Knowledge!!"
-clear()'''
-
-
 def quiz():
-    fin = open('Quiz.txt', 'r')
+    fin = open('Quiz.txt', 'r')  # Opens the Quiz txt file and imports
     line_list = fin.readlines()
     fin.close()
 
@@ -75,6 +70,7 @@ def quiz():
                 print 'Incorrect'
                 in_cor += 1
                 pass
+    
     return cor
     return in_cor
 
@@ -98,23 +94,13 @@ def guess():
             print 'Correct'
         elif answer > ran_num:
             answer = raw_input('Sorry that is a little high, Try Again: ')
+            pass
         elif answer < ran_num:
             answer = raw_input('Sorry that is a little low, Try Again: ')
+            pass
         else:
             break
 
-
-def guess_game():
-    guess()
-
-    play = raw_input('Would you like to play again (y/n): ')
-
-    if play == 'y':
-        guess()
-    elif play == 'n':
-        pass
-    else:
-        pass
 
 # Tic Tac Toe Code
 
@@ -200,3 +186,43 @@ def tic_game():
         if tic_win(player2) is True:
             break
 
+# Menu Code
+i = True
+if i is True:
+    print 'Welcome to the Exciting Three-Game Menu!'
+    print 'There are three games to choose from:'
+    print '1. The Quiz on Canadian Provincial Capitals'
+    print '2. The Two-Player Tic Tac Toe'
+    print '3. The Random Number Guesser'
+    print 'Please choose a game: '
+    choice = int(raw_input())
+   
+    if choice == 1:
+        clear()
+        print "Welcome to the Quiz on Canadian Provincial Capitals."
+        print "Prepare to be amazed and test your Knowledge!!"
+        quiz()
+        print "You got ", cor, ' answers correct.'
+        print 'You got', in_cor, ' answers wrong.'
+        pass
+    elif choice == 2:
+        clear()
+        print "Welcome to Tic Tac Toe."
+        print 'I hope both players are ready.'
+        tic_game()
+        pass
+    elif choice == 3:
+        clear()
+        guess()
+        pass
+    else:
+        clear()
+        pass
+
+    again = raw_input("Would you like to play again(y/n)? ")
+
+    if again == 'y':
+        pass
+    else:
+        i = False
+        break
