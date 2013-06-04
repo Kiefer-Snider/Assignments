@@ -54,6 +54,8 @@ def quiz():
     fin.close()
 
     quiz_list = []
+    cor = 0
+    in_cor = 0
     for k, line in enumerate(line_list):
         complete = False
         line1 = line.strip()
@@ -64,17 +66,22 @@ def quiz():
             answer = line1
             complete = True
         if complete is True:
-            full_question1 = (question, answer)
-            print full_question1
-            quiz_list.append(full_question1)
-
-quiz()
-     
+            play_ans = raw_input(question)
+            if play_ans == answer:
+                print 'Correct'
+                cor += 1
+                pass
+            else:
+                print 'Incorrect'
+                in_cor += 1
+                pass
+    return cor
+    return in_cor
 
 
 # Number Guesser Code
 
-def guess():   
+def guess(): 
     print 'This is the Random Number Guesser!'
     print 'You will give me two numbers and then you will'
     print 'Guess a number between those numbers.'
