@@ -45,11 +45,31 @@ def clear():
 
 '''print "Welcome to the Great Quiz!!"
 print "Prepare to be amazed and test your Knowledge!!"
-clear()
+clear()'''
 
-with open('Quiz.txt', 'rU') as f:
-    for line in f:
-        print line,'''
+
+def quiz():
+    fin = open('Quiz.txt', 'r')
+    line_list = fin.readlines()
+    fin.close()
+
+    quiz_list = []
+    for k, line in enumerate(line_list):
+        complete = False
+        line1 = line.strip()
+
+        if k % 2 == 0:
+            question = line1
+        if k % 2 == 1:
+            answer = line1
+            complete = True
+        if complete is True:
+            full_question1 = (question, answer)
+            print full_question1
+            quiz_list.append(full_question1)
+
+quiz()
+     
 
 
 # Number Guesser Code
