@@ -45,11 +45,14 @@ def clear():
 
 def quiz():
     fin = open('Quiz.txt', 'r')  # Opens the Quiz txt file and imports
+    quiz = {}
 
     while True:
 
         question = fin.readline()
         answer = fin.readline()
+        
+        # TODO: Put into dictionary as a key here
         if not question:
             break
         play_ans = raw_input(question)
@@ -89,6 +92,7 @@ def guess():
 
 
 def tic_win(player):
+    playerwin = False
     for c in range(0, 3):  # Rows and Columns Counter
 
         # Horizontal Check
@@ -106,6 +110,7 @@ def tic_win(player):
         # Diagonal Check (right to left)
     if board[0][2] == player and board[1][1] == player and board[2][0] == player:
             playerwin = True
+
 
     print "*********\n\n%s wins\n\n*********" % player
     return playerwin
@@ -150,7 +155,7 @@ def tic_game():
             pass  
         elif turns == 9:
             print 'This game has come to a draw!'
-            
+
 
         tic_turn(player2)
         turns += 1
@@ -169,26 +174,22 @@ if i is True:
     print '3. The Random Number Guesser'
     print 'Please choose a game: '
     choice = int(raw_input())
-   
+    clear()
+
     if choice == 1:
-        clear()
         print "Welcome to the Quiz on Canadian Provincial Capitals."
         print "Prepare to be amazed and test your Knowledge!!"
         quiz()
                
     elif choice == 2:
-        clear()
         print "Welcome to Tic Tac Toe."
         print 'I hope both players are ready.'
         tic_game()
         
     elif choice == 3:
-        clear()
+        print 'This is the Random Number Guesser!'
         guess()
         
-    else:
-        clear()
-       
     again = raw_input("Would you like to play again(y/n)? ")
 
     if again == 'y':
